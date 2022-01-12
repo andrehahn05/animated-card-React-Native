@@ -7,6 +7,8 @@ export const Container = styled.View<propsContainer>`
   margin-top: 12px;
   height: 50px;
   padding: 8px;
+  flex-direction: row;
+  align-items: center;
 `;
 interface propsContainer {
   width: any;
