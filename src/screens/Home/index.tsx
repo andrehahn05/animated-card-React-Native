@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, Input } from '../../components';
 import {
   Container,
   Header,
@@ -7,6 +8,7 @@ import {
   Content,
   Button,
   TextButton,
+  View,
 } from './styles';
 
 const Home = () => (
@@ -17,8 +19,15 @@ const Home = () => (
     </Header>
 
     <Content>
-      {/* <Card/>  */}
-      {/* <Input/> */}
+      <Card />
+
+      <Input />
+      <Input />
+
+      <View>
+        <Input width="45%" />
+        <Input width="45%" />
+      </View>
     </Content>
 
     <Button>

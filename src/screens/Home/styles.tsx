@@ -11,7 +11,7 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
-  margin-top: 16px;
+  margin-top: 15px;
   width: 100%;
 `;
 
@@ -43,7 +43,7 @@ export const View = styled.View`
 export const Button = styled.TouchableOpacity`
   width: 100%;
   height: 55px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   background-color: #6a1b9a;
   align-items: center;
   justify-content: center;
