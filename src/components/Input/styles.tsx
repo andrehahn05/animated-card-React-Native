@@ -14,4 +14,8 @@ interface propsContainer {
   width: any;
 }
 
-export const TextInput = styled.TextInput``;
+export const TextInput = styled.TextInput`
+  font-size: 16px;
+  width: 100%;
+  margin-left: 4px;
+`;

@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+
+const { height } = Dimensions.get('window');
 
 export const Container = styled.View`
   width: 100%;
-  height: 100%;
+  height: ${height}px;
   padding: 16px;
   flex: 1;
   justify-content: space-between;
@@ -52,4 +55,11 @@ export const Button = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+`;
+
+export const ScrollView = styled.ScrollView`
+  width: 100%;
+  height: 100%;
 `;
