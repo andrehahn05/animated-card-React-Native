@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Input } from '../../components';
 import IconUser from '../../assets/icon-user.svg';
 import IconCode from '../../assets/icon-code.svg';
@@ -16,47 +16,84 @@ import {
   ScrollView,
 } from './styles';
 
-const Home = () => (
-  <ScrollView>
-    <Container>
-      <Header>
-        <Title>Meu cartão</Title>
-        <Subtitle>Insira os dados do cartão</Subtitle>
-      </Header>
+const Home = () => {
+  const [data, setData] = useState({
+    name: '',
+    number: '',
+    validate: '',
+    cvv: '',
+  });
 
-      <Content>
-        <Card />
+  return (
+    <ScrollView>
+      <Container>
+        <Header>
+          <Title>Meu cartão</Title>
+          <Subtitle>Insira os dados do cartão</Subtitle>
+        </Header>
 
-        <Input
-          placeholder="Nome do titular"
-          icon={<IconUser fill="#6A1B9A" width={18} height={18} />}
-        />
+        <Content>
+          <Card />
 
-        <Input
-          placeholder="Número do cartão"
-          icon={<IconNumber fill="#6A1B9A" width={24} height={24} />}
-        />
-
-        <View>
           <Input
-            placeholder="Validade"
-            width="45%"
-            icon={<IconDate fill="#6A1B9A" width={16} height={16} />}
+            placeholder="Nome do titular"
+            value={data.name}
+            onChangeText={text => {
+              setData({ ...data, name: text });
+            }}
+            icon={<IconUser fill="#6A1B9A" width={18} height={18} />}
           />
 
           <Input
-            placeholder="CVV"
-            width="45%"
-            icon={<IconCode fill="#6A1B9A" width={16} height={16} />}
+            placeholder="Número do cartão"
+            value={data.number}
+            type="credit-card"
+            mask
+            onChangeText={text => {
+              setData({ ...data, number: text });
+            }}
+            icon={<IconNumber fill="#6A1B9A" width={18} height={18} />}
           />
-        </View>
-      </Content>
 
-      <Button>
-        <TextButton>Cadastrar</TextButton>
-      </Button>
-    </Container>
-  </ScrollView>
-);
+          <View>
+            <Input
+              placeholder="Validade"
+              value={data.validate}
+              type="custom"
+              options={{
+                mask: '99/99',
+              }}
+              mask
+              onChangeText={text => {
+                setData({ ...data, validate: text });
+              }}
+              width="45%"
+              icon={<IconDate fill="#6A1B9A" width={18} height={18} />}
+            />
+
+            <Input
+              placeholder="CVV"
+              value={data.cvv}
+              type="custom"
+              options={{
+                mask: '9999',
+              }}
+              mask
+              onChangeText={text => {
+                setData({ ...data, cvv: text });
+              }}
+              width="45%"
+              icon={<IconCode fill="#6A1B9A" width={18} height={18} />}
+            />
+          </View>
+        </Content>
+
+        <Button>
+          <TextButton>Cadastrar</TextButton>
+        </Button>
+      </Container>
+    </ScrollView>
+  );
+};
 
 export default Home;

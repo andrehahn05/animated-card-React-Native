@@ -1,17 +1,46 @@
 import React, { ReactElement } from 'react';
-import { Container, TextInput } from './styles';
+import { Container, MaskTextInput, TextInput } from './styles';
 
 interface propsInput {
   width?: string;
   icon: ReactElement | false;
-  placeholder?: string;
+  placeholder: string;
+  mask?: boolean;
+  value: string;
+  type?: any;
+  options?: any;
+  onChangeText: (text: string) => void;
 }
 
-const Input: React.FC<propsInput> = ({ width, icon, placeholder }) => {
+const Input: React.FC<propsInput> = ({
+  width,
+  icon,
+  placeholder,
+  mask,
+  value,
+  type,
+  options,
+  onChangeText,
+}) => {
   return (
     <Container width={width}>
       {icon && icon}
-      <TextInput placeholder={placeholder} />
+
+      {mask ? (
+        <MaskTextInput
+          value={value}
+          type={type}
+          options={options}
+          onChangeText={text => onChangeText(text)}
+          placeholder={placeholder}
+        />
+      ) : (
+        <TextInput
+          value={value}
+          onChangeText={text => onChangeText(text)}
+          placeholder={placeholder}
+        />
+      )}
     </Container>
   );
 };
