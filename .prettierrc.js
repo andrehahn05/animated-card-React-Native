@@ -4,7 +4,5 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
-  fileInfoOptions: {
-    withNodeModules: true,
-  },
+
 };

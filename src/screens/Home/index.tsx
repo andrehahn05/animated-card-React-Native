@@ -4,6 +4,7 @@ import IconUser from '../../assets/icon-user.svg';
 import IconCode from '../../assets/icon-code.svg';
 import IconDate from '../../assets/icon-date.svg';
 import IconNumber from '../../assets/icon-number.svg';
+import { getBrand } from '../../components/Input/brand';
 import {
   Container,
   Header,
@@ -17,6 +18,9 @@ import {
 } from './styles';
 
 const Home = () => {
+  const [icon, setIcon] = useState({
+    icon: false,
+  });
   const [data, setData] = useState({
     name: '',
     number: '',
@@ -33,7 +37,7 @@ const Home = () => {
         </Header>
 
         <Content>
-          <Card />
+          <Card data={data} back={false} icon={icon?.icon} />
 
           <Input
             placeholder="Nome do titular"
@@ -51,6 +55,7 @@ const Home = () => {
             mask
             onChangeText={text => {
               setData({ ...data, number: text });
+              setIcon(getBrand(text));
             }}
             icon={<IconNumber fill="#6A1B9A" width={18} height={18} />}
           />
